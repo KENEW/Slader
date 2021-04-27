@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "822526387432",
+    "project_id": "slader-87fd2",
+    "storage_bucket": "slader-87fd2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822526387432:android:12084340bb24200534155d",
+        "android_client_info": {
+          "package_name": "com.kenewstudio.slader"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822526387432-omn5chkotu9lal53gb49mm4t6bgp7oea.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kenewstudio.slader",
+            "certificate_hash": "e26522930e479ab73b03e262d951178ffcd1afca"
+          }
+        },
+        {
+          "client_id": "822526387432-8hhuc9v3gl5hpa58072dinmb9ocqiceu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzj_ggNUoK6lhioj1QneGo0q6NK22vq-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "822526387432-8hhuc9v3gl5hpa58072dinmb9ocqiceu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
