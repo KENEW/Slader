@@ -19,9 +19,10 @@ public class LobbyCanvasManager : MonoBehaviour
 	public GameObject pressTouchText;
 	public Animator logoAnimator;
 
+	private bool isLobby = false;
+
 	private void Awake()
 	{
-		//Screen.SetResolution(720, 1280, true);
 		QualitySettings.vSyncCount = 0;
 		Application.targetFrameRate = 60;
 	}
@@ -55,6 +56,12 @@ public class LobbyCanvasManager : MonoBehaviour
 	}
 	public void OnLobbyCanvas()
 	{
+		if(isLobby)
+		{
+			return;
+		}
+
+		isLobby = true;
 		SoundManager.Instance.PlaySFX("ButtonClick");
 		logoAnimator.SetBool("LogoUp", true);
 		pressTouchText.SetActive(false);

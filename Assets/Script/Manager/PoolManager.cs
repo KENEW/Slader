@@ -3,13 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PoolType
-{
-	Effect,
-	Projectile,
-	Object
-}
-
+/// <summary>
+/// 오브젝트의 풀링을 처리해준다.
+/// </summary>
 [System.Serializable]
 public class ObjectInfo
 {

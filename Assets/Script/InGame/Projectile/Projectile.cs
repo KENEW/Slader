@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 투사체의 기본 정보들을 처리합니다.
+/// </summary>
 public class Projectile : MonoBehaviour
 {
 	protected const int MAX_PENETRATE = 100;

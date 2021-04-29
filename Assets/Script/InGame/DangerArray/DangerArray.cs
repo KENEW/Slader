@@ -4,6 +4,9 @@ using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
 
+/// <summary>
+/// 폭발과 같은 경각심을 알리기위해 일어나기 전에 맵에 시각적인 위혐 표시를 처리해준다.
+/// </summary>
 public class DangerArray : MonoBehaviourPunCallbacks
 {
     public SpriteRenderer spriteRender;

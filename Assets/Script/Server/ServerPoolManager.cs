@@ -4,6 +4,9 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
+/// <summary>
+/// 포톤에서 오브젝트 풀링을 처리해주는 것을 도와준다.
+/// </summary>
 public class ServerPoolManager : MonoBehaviour
 {
 	[SerializeField] private string poolName;

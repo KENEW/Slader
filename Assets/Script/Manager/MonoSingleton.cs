@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// 싱글톤 - 어디서든 접근 가능함 (같은 씬에서만 작동)
+/// </summary>
 public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T instance = null;
@@ -16,7 +19,6 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
                 {
                     instance = new GameObject("@" + typeof(T).ToString(),
                           typeof(T)).GetComponent<T>();
-                    DontDestroyOnLoad(instance);
                 }
             }
             return instance;

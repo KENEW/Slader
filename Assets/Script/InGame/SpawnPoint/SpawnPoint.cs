@@ -5,6 +5,9 @@ using System;
 using Photon.Pun;
 using Photon.Realtime;
 
+/// <summary>
+/// 몬스터들의 정해진 스폰지역에서 생성을 관리합니다.
+/// </summary>
 public class SpawnPoint : MonoBehaviour
 {
     private readonly float SUMMON_DELAY_MAX = 18.0f;

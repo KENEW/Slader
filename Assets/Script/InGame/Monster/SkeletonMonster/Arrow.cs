@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using Photon.Pun;
 
+/// <summary>
+/// 몬스터들의 화살
+/// </summary>
 public class Arrow : Projectile
 {
     private PlayerCollCheck playerColl;

@@ -1,23 +1,23 @@
 ﻿using UnityEngine;
-using Firebase.Extensions;
 using Firebase;
-using Firebase.Database;
 using Firebase.Auth;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
-
-using System;
 using System.Collections;
 
+/// <summary>
+/// 구글과 파이어베이스의 연동을 관리해준다.
+/// </summary>
 public class AuthManager : MonoSingleton<AuthManager>
 {
-	public bool IsFirebaseReady { get; private set; }
+	public bool isFirebaseReady { get; private set; }
 
 	public FirebaseAuth firebaseAuth;
 	public FirebaseApp firebaseApp;
 	public FirebaseUser firebaseUser;
 
 	private string userKey;
+
 	public void Init()
 	{
 		GooglePlayGameActive();
@@ -85,7 +85,7 @@ public class AuthManager : MonoSingleton<AuthManager>
 			else
 			{
 				DebugOptimum.Log("파이어베이스 로그인 성공");
-				IsFirebaseReady = true;
+				isFirebaseReady = true;
 				Firebase.Auth.FirebaseUser newUser = task.Result;
 				userKey = newUser.UserId;
 

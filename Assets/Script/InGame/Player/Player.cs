@@ -259,7 +259,7 @@ public class Player : MonoBehaviourPunCallbacks
         effect.transform.position = transform.position;
         effect.transform.localScale = flipScale;
 
-        if (liftWeapon.ContinuousAttack)
+        if (liftWeapon.continuousAttack)
         {
             effect.transform.localScale = new Vector3(flipScale.x, flipScale.y, flipScale.z);
         }

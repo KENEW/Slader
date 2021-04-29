@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+/// <summary>
+/// 화살 디펜스에서 나오는 화살
+/// </summary>
 public class DefenceArrow : Projectile
 {
     protected override void OnTriggerEnter2D(Collider2D collision)

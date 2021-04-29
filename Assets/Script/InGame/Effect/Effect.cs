@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// 이펙트의 지속시간과 풀링을 처리해준다.
+/// </summary>
 public class Effect : MonoBehaviour
 {
     [SerializeField] private string poolName;

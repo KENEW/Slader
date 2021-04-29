@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class BackgroundScroll : MonoBehaviour
 {    
@@ -12,11 +11,11 @@ public class BackgroundScroll : MonoBehaviour
     public int startIndex;
     public int endIndex;
 
-    private float height;
+    private float weight;
 
     private void Start()
     {
-        height = Camera.main.orthographicSize * Screen.width / Screen.height;
+        weight = Camera.main.orthographicSize * Screen.width / Screen.height;
     }
     private void Update()
     {
@@ -31,7 +30,7 @@ public class BackgroundScroll : MonoBehaviour
     }
 	private void Scorlling()
     {
-        if(sprites[endIndex].position.x + spr.bounds.size.x < height)
+        if(sprites[endIndex].position.x + spr.bounds.size.x < weight)
         {
             Vector3 backSprPos = sprites[startIndex].transform.position;
             sprites[endIndex].transform.position = new Vector3(backSprPos.x + spr.bounds.size.x - 0.1f, backSprPos.y, backSprPos.z);

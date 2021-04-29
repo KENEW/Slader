@@ -9,6 +9,9 @@ public interface IInteraction
 {
     void Operation();
 }
+/// <summary>
+/// 상호작용이 있는 오브젝트를 처리해준다.
+/// </summary>
 public class Interaction : MonoBehaviourPunCallbacks
 {
     private const float PROGRESS_TIME = 0.05f;

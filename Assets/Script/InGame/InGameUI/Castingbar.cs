@@ -2,10 +2,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 플레이어의 다음 공격 딜레이를 시각적으로 표시해준다.
+/// </summary>
 public class Castingbar : MonoBehaviour
 {
 	public GameObject castingBarObj;
 	private Image castingbar;
+	
 	private float curTime;
 	private float destTime;
 

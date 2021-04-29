@@ -7,6 +7,9 @@ using Photon.Pun;
 
 public class UIManager : MonoSingleton<UIManager>
 {
+	[Header("System")]
+	public Image lockTouch;
+	
 	[Header("FadeScreen")]
 	public GameObject fadeObj;
 
@@ -49,10 +52,7 @@ public class UIManager : MonoSingleton<UIManager>
 	private Dictionary<string, GameObject> screenObj = new Dictionary<string, GameObject>();
 	private Image fadeImg;
 	private Coroutine deathCo;
-
-	[Header("System")]
-	public Image lockTouch;
-
+	
 	private void Start()
 	{
 		fadeImg = fadeObj.GetComponent<Image>();
@@ -173,8 +173,6 @@ public class UIManager : MonoSingleton<UIManager>
 			FadeOutScreen("Death", 0.7f, 0.6f);
 			lockTouch.raycastTarget = false;
 		});
-
-		
 	}
 	public void FadeInScreen(string _screenName, float _fadeEndTime, float _fadeEndValue)
 	{
@@ -217,12 +215,6 @@ public class UIManager : MonoSingleton<UIManager>
 			img.DOFade(0.0f, _fadeEndTime);
 		}
 	}
-
-	[PunRPC]
-	public void RpcFadeOut()
-	{
-		FadeOutScreen("screenStartCount", 0.5f, 0.6f);
-	}
 	public IEnumerator TimerTextCo(int _remainTime, Text _text)
 	{
 		int t_remainTime = _remainTime;
@@ -234,4 +226,9 @@ public class UIManager : MonoSingleton<UIManager>
 			t_remainTime--;
 		}
 	}
+	//[PunRPC]
+	//public void RpcFadeOut()
+	//{
+	//	FadeOutScreen("screenStartCount", 0.5f, 0.6f);
+	//}
 }

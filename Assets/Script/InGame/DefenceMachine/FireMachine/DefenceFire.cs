@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
+/// <summary>
+/// 화염 디펜스에서 나오는 화염
+/// </summary>
 public class DefenceFire : Projectile
 {
     protected override void OnTriggerEnter2D(Collider2D collision)

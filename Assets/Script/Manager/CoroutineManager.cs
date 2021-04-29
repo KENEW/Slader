@@ -2,6 +2,9 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// act를 이용해서 콜백을 쉽게 관리해준다.
+/// </summary>
 public class CoroutineManager : MonoSingleton<CoroutineManager>
 {
 	public void CallWaitForOneFrame(Action act)

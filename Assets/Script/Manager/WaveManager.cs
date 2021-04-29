@@ -72,6 +72,17 @@ public class WaveManager : ServerSingleton<WaveManager>, IPunObservable
 		}
 	}
 
+	[PunRPC]
+	private void MonstersDestroy()
+	{
+		var monsters = FindObjectsOfType<Monster>();
+
+		foreach (var monster in monsters)
+		{
+			monster.gameObject.SetActive(false);
+		}
+	}
+
 	public void WaveStart()
 	{
 		SoundManager.Instance.PlaySFX("WaveStart");
@@ -105,6 +116,9 @@ public class WaveManager : ServerSingleton<WaveManager>, IPunObservable
 		GameManager.Instance.gameState = GameState.GameStart;
 	}
 
+	/// <summary>
+	/// 현재 남은 몬스터 수에서 1만큼 감소한다.
+	/// </summary>
 	public void MonsterDeath()
 	{
 		if (GameManager.Instance.gameState == GameState.GameStart)

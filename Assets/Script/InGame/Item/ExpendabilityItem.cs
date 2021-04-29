@@ -2,6 +2,9 @@
 using Photon.Pun;
 using UnityEngine;
 
+/// <summary>
+/// 소모성 아이템
+/// </summary>
 public class ExpendabilityItem : MonoBehaviourPunCallbacks
 {
 	[SerializeField] protected float sustainTime = 15.0f;

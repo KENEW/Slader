@@ -69,10 +69,8 @@ public class GameManager : ServerSingleton<GameManager>
             player.state = PlayerState.Death;
 		}
 
+        WaveManager.Instance.GetComponent<PhotonView>().RPC("MonstersDestroy", RpcTarget.All);
 
-            MonsterDestroy();
-        
-      
         int addCoin = (int)(ScoreManager.Instance.GetScore() * FAIL_COIN_RESULT);
         MyData.Instance.MyCoin = addCoin;
         MyData.Instance.charData.highWave = WaveManager.Instance.GetCurrentWave - 1;
@@ -99,6 +97,7 @@ public class GameManager : ServerSingleton<GameManager>
 
         ServerData.Instance.SaveData();
         DataController.Instance.SaveGameData();
+        WaveManager.Instance.GetComponent<PhotonView>().RPC("MonstersDestroy", RpcTarget.All);
 
         SoundManager.Instance.StopBGM();
         UIManager.Instance.OnGameClear(addCoin, ScoreManager.Instance.GetScore());
@@ -115,16 +114,6 @@ public class GameManager : ServerSingleton<GameManager>
 
         act();
 	}
-    [PunRPC]
-    private void MonsterDestroy()
-    {
-       var monsters = FindObjectsOfType<Monster>();
-
-        foreach(var monster in monsters)
-        {
-           monster.gameObject.SetActive(false);
-        }
-    }
     private bool AllPlayerLoadedSceneCheck()
     {
         foreach (Photon.Realtime.Player p in PhotonNetwork.PlayerList)

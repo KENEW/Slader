@@ -3,6 +3,9 @@ using UnityEngine.UI;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 
+/// <summary>
+/// 플레이어가 방에 접속했을 때 준비화면에서 각종 이벤트를 처리해준다.
+/// </summary>
 public class PlayerListEntry : MonoBehaviour
 {
     public Text PlayerNameText;

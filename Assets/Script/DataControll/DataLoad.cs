@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// CSV로 처리된 게임 데이터를 불러온다.
+/// </summary>
 public struct UpgradeCost
 {
 	public int manaSoulCost;

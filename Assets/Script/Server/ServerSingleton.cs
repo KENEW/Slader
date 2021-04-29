@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+/// <summary>
+/// MonoBehaviourPunCallbacks를 상속한 싱글톤
+/// </summary>
 public class ServerSingleton<T> : MonoBehaviourPunCallbacks where T : MonoBehaviourPunCallbacks
 {
     private static T instance = null;

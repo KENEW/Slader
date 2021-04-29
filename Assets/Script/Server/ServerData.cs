@@ -1,19 +1,20 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 using Firebase;
 using Firebase.Database;
 
-using WebSocketSharp;
-
-public class ServerData : MonoSingleton<ServerData>
+/// <summary>
+/// Firebase에서 유저 정보의 데이터를 처리해준다.
+/// </summary>
+public class ServerData : SceneSingleTon<ServerData>
 {
     private DatabaseReference reference;
+    
+    private Dictionary<string, object> items = new Dictionary<string, object>();
     private string userKey;
 
-          Dictionary<string, object> items = new Dictionary<string, object>();
     public void Init(string userKey)
 	{
 		AppOptions options = new AppOptions { DatabaseUrl = new Uri("https://slader-21906011-default-rtdb.firebaseio.com/") };
@@ -24,7 +25,7 @@ public class ServerData : MonoSingleton<ServerData>
 	}
 	public void SaveData()
 	{
-        if(!AuthManager.Instance.IsFirebaseReady)
+        if(!AuthManager.Instance.isFirebaseReady)
         {
             return;
         }
@@ -34,8 +35,9 @@ public class ServerData : MonoSingleton<ServerData>
 	}
 	public void LoadData()
 	{
-        if(!AuthManager.Instance.IsFirebaseReady)
+        if(!AuthManager.Instance.isFirebaseReady)
         {
+		    DebugOptimum.Log("파이어 베이스 실패");
             return;
         }
 
@@ -52,6 +54,7 @@ public class ServerData : MonoSingleton<ServerData>
                     items.Add(data.Key, data.Value);
                 }
 
+                //String으로 변환하고 형변환을 진행하기 때문에 오버헤드가 무척큼 다른걸로 대안 찾는 중
                 var item1 = items["attackLevel"].ToString();
                 MyData.Instance.charData.attackLevel = int.Parse(item1);
                 var item2 = items["coinLevel"].ToString();
@@ -66,27 +69,27 @@ public class ServerData : MonoSingleton<ServerData>
                 MyData.Instance.charData.coin = int.Parse(item6);
                 var item7 = items["name"].ToString();
                 MyData.Instance.charData.name = item7;
-			    var item8 = items["gameCount"].ToString();
+                var item8 = items["gameCount"].ToString();
                 MyData.Instance.charData.gameCount = int.Parse(item8);
-            }
-            else
-            {
-                MyData.Instance.charData = new CharData();
+
+                //안되서 위 코드 수정
+                //var item1 = (int)items["attackLevel"];
+                //MyData.Instance.charData.attackLevel = item1;
+                //var item2 = (int)items["attackLevel"];
+                //MyData.Instance.charData.coinLevel = item2;
+                //var item3 = (int)items["manaLevel"];
+                //MyData.Instance.charData.manaLevel = item3;
+                //var item4 = (int)items["highScore"];
+                //MyData.Instance.charData.highScore = item4;
+                //var item5 = (int)items["highWave"];
+                //MyData.Instance.charData.highWave = item5;
+                //var item6 = (int)items["coin"];
+                //MyData.Instance.charData.coin = item6;
+                //var item7 = (string)items["name"];
+                //MyData.Instance.charData.name = item7;
+                //var item8 = (int)items["gameCount"];
+                //MyData.Instance.charData.gameCount = item8;
             }
         });   
 	}
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.F1))
-        {
-            MyData.Instance.charData.attackLevel = (int)items["attackLevel"];
-		    MyData.Instance.charData.coinLevel = (int)items["coinLevel"];
-		    MyData.Instance.charData.manaLevel = (int)items["manaLevel"];
-            MyData.Instance.charData.highScore = (int)items["highScore"];
-		    MyData.Instance.charData.highWave = (int)items["highWave"];
-		    MyData.Instance.charData.coin = (int)items["coin"];
-		    MyData.Instance. charData.name = (string)items["name"];
-		    MyData.Instance.charData.gameCount = (int)items["gameCount"]; 
-        }
-    }
 }

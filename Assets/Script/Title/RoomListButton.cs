@@ -2,6 +2,9 @@
 using UnityEngine.UI;
 using Photon.Pun;
 
+/// <summary>
+/// 로비에서 방 목록을 확인할 때 나타내는 버튼을 처리해준다.
+/// </summary>
 public class RoomListButton : MonoBehaviour
 {
     public Text RoomNameText;

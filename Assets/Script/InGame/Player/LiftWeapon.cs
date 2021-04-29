@@ -4,33 +4,34 @@ using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
 
+/// <summary>
+/// 플레이어가 장착한 무기를 관리합니다.
+/// </summary>
 public class LiftWeapon : ServerSingleton<LiftWeapon>
 {
+    private const float weaponAngleOffsetOn = -145;
+    private const float weaponAngleOffsetOff = 5;
+    
     public SpriteRenderer sprRend;
     public GameObject handWeapon;
     public GameObject hand;
-
+    public Animator bowAnimator;
+    
     public VariableJoystick joyStick;
     public Player player;
 
+    public int curWeapon = 0;
+    public bool continuousAttack = false;
+    
+    private bool weaponFlip = false;
+    private float continuousAngle = 0f;
+    private float weaponAngle;
     private int flipNum = 1;
-    private float ContinuousAngle = 0f;
-    public bool ContinuousAttack = false;
-
-    float weaponAngle;
 
     public Sprite[] oneHandSpr;
     public Dictionary<string, int> oneHandWeapon = new Dictionary<string, int>();
     public GameObject[] weaponObj;
-
-    public int curWeapon = 0;
-    public Animator bowAnimator;
-    private bool weaponFlip = false;
-
-    private const float weaponAngleOffsetOn = -145;
-    private const float weaponAngleOffsetOff = 5;
-
-
+    
     private void Start()
     {
         joyStick = GameObject.Find("AttackJoyStick").GetComponent<VariableJoystick>();
@@ -55,7 +56,7 @@ public class LiftWeapon : ServerSingleton<LiftWeapon>
         {
             case 0:
             case 2:
-                weaponAngle = (((joyStick.Direction.y + 1.0f) * 90) + ContinuousAngle) * flipNum;
+                weaponAngle = (((joyStick.Direction.y + 1.0f) * 90) + continuousAngle) * flipNum;
                 if (joyStick.Direction.x >= 0.0f)
                 {
                     weaponFlip = false;
@@ -106,24 +107,28 @@ public class LiftWeapon : ServerSingleton<LiftWeapon>
                 break;
         }
     }
+    /// <summary>
+    /// 무기를 가지고 공격을 처리
+    /// </summary>
     public void LiftWeaponAttack()
     {
         if(curWeapon == 1)
         {
-            //GetComponent<PhotonView>().RPC("OnBowAnimation", RpcTarget.All, false);
             bowAnimator.SetBool("OnBend", false);
         }
         else
         {
-            ContinuousAttack = !ContinuousAttack;
-            hand.transform.localRotation = Quaternion.Euler(0, 0, ContinuousAttack ? weaponAngleOffsetOn : weaponAngleOffsetOff);
+            continuousAttack = !continuousAttack;
+            hand.transform.localRotation = Quaternion.Euler(0, 0, continuousAttack ? weaponAngleOffsetOn : weaponAngleOffsetOff);
         }
     }
+    /// <summary>
+    /// 무기를 준비를 처리
+    /// </summary>
     public void LiftWeaponReady()
     {
         if (curWeapon == 1)
         {
-            //GetComponent<PhotonView>().RPC("OnBowAnimation", RpcTarget.All, true);
             bowAnimator.SetBool("OnBend", true);
         }
     }
